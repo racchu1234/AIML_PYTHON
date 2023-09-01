@@ -1,0 +1,64 @@
+import pandas as pd
+import numpy as np 
+
+#q1 read data
+data=pd.read_csv("C:/Users/SPTINT-14/Desktop/csv/car dataset.csv")[:10]
+print(data)
+
+#q2 statistical details of dataset
+stats=data.describe()
+print(stats)
+print(data['year'].min())
+
+#q3 getall cars with 8 cylinder
+print(data[data['cylinders']==8]['model'])
+
+#number of cars manufactured in a each year
+print(data.groupby('year')['year'].value_counts())
+
+output
+
+   Unnamed: 0  price      brand  ...      condition  Unnamed: 13 cylinders
+0           0   6300     toyota  ...   10 days left          NaN       8.0
+1           1   2899       ford  ...    6 days left          NaN       8.0
+2           2   5350      dodge  ...    2 days left          NaN       8.0
+3           3  25000       ford  ...  22 hours left          NaN       8.0
+4           4  27700  chevrolet  ...  22 hours left          NaN       8.0
+5           5   5700      dodge  ...    2 days left          NaN       8.0
+6           6   7300  chevrolet  ...  22 hours left          NaN       8.0
+7           7  13350        gmc  ...  20 hours left          NaN       8.0
+8           8  14600  chevrolet  ...  22 hours left          NaN       8.0
+9           9   5250       ford  ...    2 days left          NaN       8.0
+
+[10 rows x 15 columns]
+       Unnamed: 0        price  ...  Unnamed: 13  cylinders
+count    10.00000     10.00000  ...          0.0       10.0
+mean      4.50000  11344.90000  ...          NaN        8.0
+std       3.02765   8734.75905  ...          NaN        0.0
+min       0.00000   2899.00000  ...          NaN        8.0
+25%       2.25000   5437.50000  ...          NaN        8.0
+50%       4.50000   6800.00000  ...          NaN        8.0
+75%       6.75000  14287.50000  ...          NaN        8.0
+max       9.00000  27700.00000  ...          NaN        8.0
+
+[8 rows x 7 columns]
+2008
+0    cruiser
+1         se
+2        mpv
+3       door
+4       1500
+5        mpv
+6         pk
+7       door
+8     malibu
+9        mpv
+Name: model, dtype: object
+year  year
+2008  2008    1
+2010  2010    1
+2011  2011    1
+2014  2014    1
+2017  2017    2
+2018  2018    4
+Name: year, dtype: int64
